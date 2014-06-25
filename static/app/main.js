@@ -9,7 +9,8 @@ vim = angular.module('vim', ['ngRoute'], function ($interpolateProvider) {
 
 
 //配置路由
-vim.config(function ($routeProvider) {
+vim.config(function ($routeProvider,$locationProvider) {
+    $locationProvider.html5Mode(true);
     $routeProvider.
         when('/', {templateUrl: 'http://vimcn.qiniudn.com/view/main.html', controller: MainController}).
         when('/Help', {templateUrl: 'http://vimcn.qiniudn.com/view/help.html', controller: HelpController}).
@@ -45,15 +46,13 @@ MainController = function ($scope,$route, $routeParams, $location, $http,$window
             alert("不是文件,这是什么呢");
             return;
         }
-        if (!helper.isImage($scope.File)){
-            alert("咦竟然不是图片,打屁股");
-            return;
+        if (helper.isImage($scope.File)){
+            var reader = new FileReader();
+            reader.onload = onLoadFile;
+            reader.readAsDataURL($scope.File);
+            $("#sgnpCtn").css({"width":"1080px","marginLeft":"-550px","marginTop":"-265px"})
         }
-        var reader = new FileReader();
-        reader.onload = onLoadFile;
-        reader.readAsDataURL($scope.File);
 
-        $("#sgnpCtn").css({"width":"1080px","marginLeft":"-550px","marginTop":"-265px"})
 
         $scope.$apply();
     }
