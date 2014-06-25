@@ -1,0 +1,26 @@
+<div id="sgnpCtn" class="rgstrCtn dspr"  ng-controller="MainController">
+    <div  data-ng-if="File" id="imgbox" style="">
+        <canvas id="preimg"/>
+    </div>
+    <div style="float: right;width: 305px;">
+        <div class="rgstrHd">
+            <h2 class="name">vim社区图床</h2>
+            <p class="desc">社区网址:vim-cn.com</p>
+        </div>
+
+        <div class="rgstrForm" >
+            <div id="sgnpSmt" class="btn">
+                选择文件
+                <input type="file" id="imgfile" onchange="angular.element(this).scope().onFileSelect(this.files)" multiple/>
+            </div>
+            <div data-ng-if="File" class="btn" data-ng-click="FileUp()">
+                确认上传
+            </div>
+            <div ng-file-drop="onFileSelect" class="btn drop" style="">该处文件可安全着陆</div>
+            <div data-ng-if="imgurl" class="btn url" style="">上传后链接：<{imgurl}></div>
+        </div>
+    </div>
+    <div id="notice" data-ng-if="upnoice">
+        <div class="title">正在提交数据</div>
+    </div>
+</div>

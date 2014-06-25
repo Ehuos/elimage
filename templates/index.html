@@ -1,34 +1,21 @@
 <!DOCTYPE html>
-<meta charset="utf-8" />
-<title>elimage: CLI image pastebin</title>
-<pre>
-elimage(1)                         ELIMAGE                           elimage(1)
+<html>
+<head>
+    <title>elimage: CLI image pastebin</title>
+    <link rel="stylesheet" type="text/css" href="http://vimcn.qiniudn.com/css/main.css">
+</head>
+<body ng-app="vim">
+    <div id="content" class="authCtn" ng-view>
 
-NAME
-    Elimage: CLI Image Pastebin
-
-SYNOPSIS
-    curl -F 'name=@/path/to/image' {{ url }}
-
-    or upload via your browser: <form action="/" method="post" enctype="multipart/form-data" style="display: inline;"><input type="file" name="image" width="10" multiple/><input type="submit" value="Upload!"/></form>
-
-DESCRIPTION
-    Paste image files with command line. You can give <u>-F</u> more times to paste
-    more images.
-
-EXAMPLES
-    <span style="color:#ffc000" >$</span> curl -F 'name=@screenshot.png' {{ url }}
-    {% if url.find('vim-cn.com') != -1 or url.find('edisonnotes.com') != -1 %}<a href="{{ url }}97/2d8490849c8fab885218b478cc715ab0f3f4a9">{{ url }}97/2d8490849c8fab885218b478cc715ab0f3f4a9</a>{% else %}{{ url }}97/2d8490849c8fab885218b478cc715ab0f3f4a9{% end %}
-
-URLS
-    {% if url.find('vim-cn.com') != -1 %}<a href="http://p.vim-cn.com/">http://p.vim-cn.com/</a>{% else %}<a href="http://paste.edisonnotes.com/">http://paste.edisonnotes.com/</a>{% end %}
-        A CLI code pastebin
-
-    <a href="https://github.com/Vim-cn/elimage">https://github.com/Vim-cn/elimage</a>
-
-TOOLS
-    <a href="elimage">elimage</a>: script to quickly paste your images
-
-                                24 Oct 2012                          elimage(1)
-</pre>
-<!-- vim: set fdm=marker et sw=4: -->
+    </div>
+    <div class="btnCtn">
+        <a id="up" href="#/" class="auth lgn" title="登录"></a>
+        <a id="help" href="#/Help" class="auth lgn" title="帮助"></a>
+        <a id="aboutus" href="#/Us" class="auth sgnp" title="关于我们"></a>
+    </div>
+</body>
+<script type="application/javascript" src="http://vimcn.qiniudn.com/jquery.min.js"></script>
+<script type="application/javascript" src="http://vimcn.qiniudn.com/angular/angular.min.js"></script>
+<script type="application/javascript" src="http://vimcn.qiniudn.com/angular/angular-route.min.js"></script>
+<script type="application/javascript" src="http://vimcn.qiniudn.com/app/main.js"></script>
+</html>
