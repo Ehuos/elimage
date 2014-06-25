@@ -38,12 +38,13 @@ MainController = function ($scope,$route, $routeParams, $location, $http,$window
 
     $scope.onFileSelect = function ($files) {
         $scope.File = $files[0];
+        if ($scope.File == undefined) return;
         if (!helper.support) {
             alert("不支持HTML5！喵,换浏览器");
             return;
         }
         if (!helper.isFile($scope.File)){
-            alert("不是文件,这是什么呢");
+            alert("不是文件,这是什么呢"+$scope.File);
             return;
         }
         if (helper.isImage($scope.File)){
@@ -52,8 +53,6 @@ MainController = function ($scope,$route, $routeParams, $location, $http,$window
             reader.readAsDataURL($scope.File);
             $("#sgnpCtn").css({"width":"1080px","marginLeft":"-550px","marginTop":"-265px"})
         }
-
-
         $scope.$apply();
     }
 
@@ -67,15 +66,15 @@ MainController = function ($scope,$route, $routeParams, $location, $http,$window
         $scope.upnoice = "正在上传文件";
         $http.post("/", fd, {
             withCredentials: true,
-            headers: {'Content-Type': undefined },
+            //headers: {'Content-Type': undefined },
             transformRequest: angular.identity
         }).success(function (data) {
             $scope.upnoice = "";
             $scope.imgurl = data
             console.log(data)
-        }).error(function () {
+        }).error(function (data) {
             $scope.upnoice = "";
-            alert("程序出错，小白要被毒打了")
+            alert(data)
         });
     }
 
